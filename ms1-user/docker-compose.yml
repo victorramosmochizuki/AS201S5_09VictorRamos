@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+  app:
+    container_name: app-ms1-user
+    image: app-ms1-user
+    build: ./
+    ports:
+      - "9090:9090"
+    depends_on:
+      - dbpostgresql
+  dbpostgresql:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=dbUser
+
